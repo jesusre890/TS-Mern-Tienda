@@ -11,6 +11,10 @@ html{
   scroll-behavior: smooth;
 }
 
+.rating span {
+  color: #868686;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
