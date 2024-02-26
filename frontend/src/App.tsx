@@ -142,7 +142,7 @@ function App() {
       <main className=" mt-8 flex justify-center">
         <Outlet/>
       </main>
-      <footer>Footer</footer>
+      <footer className=" mt-10 ">Todos los derechos reservados</footer>
     </div>
   );
 }
