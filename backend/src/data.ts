@@ -60,7 +60,7 @@ export const sampleProducts: Product[] = [
     category: "Zapatillas",
     brand: "Fila",
     price: 100,
-    countInStock: 700,
+    countInStock: 0,
     description:
       "Las zapatillas Fila Disruptor II destacan por su diseño robusto y su confort superior, perfectas para destacar en la calle.",
     rating: 4.4,

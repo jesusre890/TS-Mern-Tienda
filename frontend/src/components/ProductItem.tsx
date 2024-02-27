@@ -47,14 +47,6 @@ export default function ProductItem({ product }: { product: Product }) {
             <div className=" mb-3">
               <Rating rating={product.rating} numReviews={product.numReviews} />
             </div>
-            {/*<Typography
-              placeholder={undefined}
-              variant="small"
-              color="gray"
-              className="font-normal opacity-75"
-            >
-              {product.description}
-            </Typography>*/}
           </CardBody>
           <CardFooter placeholder={undefined} className="pt-0">
             {product.countInStock === 0 ? (

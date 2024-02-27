@@ -19,7 +19,7 @@ export default function HomePage() {
     <MessageBox>{getError(error as unknown as ApiError)}</MessageBox> //verr
   ) : (
     
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         <Helmet>
           <title>Shoes Shop</title>
         </Helmet>
