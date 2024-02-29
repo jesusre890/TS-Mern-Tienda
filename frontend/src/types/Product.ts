@@ -1,4 +1,5 @@
-export type Product = {
+export type Product={
+  _id: string;
   name: string;
   slug: string;
   image: string;
