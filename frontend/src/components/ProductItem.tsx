@@ -48,7 +48,7 @@ export default function ProductItem({ product }: { product: Product }) {
               <Rating rating={product.rating} numReviews={product.numReviews} />
             </div>
           </CardBody>
-          <CardFooter placeholder={undefined} className="pt-0">
+          <CardFooter placeholder={undefined}>
             {product.countInStock === 0 ? (
               <Button
                 disabled

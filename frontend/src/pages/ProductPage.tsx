@@ -15,7 +15,7 @@ export default function ProductPage() {
     isLoading,
     error,
   } = useGetProductDetailsBySlugQuery(slug!);
-  //console.log(slug);
+  console.log(product);
 
   return isLoading ? (
     <LoadingBox />
@@ -32,35 +32,35 @@ export default function ProductPage() {
         <div>
           <img
             className="h-auto w-full rounded-lg object-cover object-center"
-            src={product.image}
-            alt={product.name}
+            src={product?.image}
+            alt={product?.name}
           />
         </div>
         <Card placeholder={undefined} className="w-96 m-auto">
           <List placeholder={undefined}>
-            <h1 className="text-4xl font-medium">{product.name}</h1>
+            <h1 className="text-4xl font-medium">{product?.name}</h1>
 
             <ListItem placeholder={undefined}>
               <Rating placeholder={undefined} />
             </ListItem>
 
             <ListItem placeholder={undefined}>
-              Precio: ${product.price}
+              Precio: ${product?.price}
             </ListItem>
 
-            <ListItem placeholder={undefined}>{product.description}</ListItem>
+            <ListItem placeholder={undefined}>{product?.description}</ListItem>
 
             <div className="flex justify-start">
               <ListItem placeholder={undefined}>Status: </ListItem>
               <ListItem placeholder={undefined}>
-                {product.countInStock > 0 ? (
+                {product?.countInStock > 0 ? (
                   <div className=" text-green-600 font-bold">En Stock</div>
                 ) : (
                   <div className=" text-red-600 font-bold">Sin Stock</div>
                 )}
               </ListItem>
             </div>
-            {product.countInStock === 0 ? (
+            {product?.countInStock === 0 ? (
               <Button
                 disabled
                 placeholder={undefined}

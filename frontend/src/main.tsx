@@ -15,10 +15,8 @@ import ProductPage from "./pages/ProductPage.tsx";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-//import axios from "axios";
-
-//axios.defaults.baseURL =
-//  process.env.NODE_ENV === "development" ? "http://localhost:4000" : "/";
+//import { StoreProvider } from "./Store.tsx";
+import { ThemeContextProvider } from "./context/ThemeContext.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

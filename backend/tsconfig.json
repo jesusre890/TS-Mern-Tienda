@@ -5,7 +5,7 @@
     "strict": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    //"experimentalDecorators": true,
-    //"emitDecoratorMetadata": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

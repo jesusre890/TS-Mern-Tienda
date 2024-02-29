@@ -10,7 +10,6 @@ import { IoCartOutline } from "react-icons/io5";
 import { Outlet } from "react-router-dom";
 
 function App() {
-
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
@@ -18,7 +17,7 @@ function App() {
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
-  },[]);
+  }, []);
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -35,7 +34,7 @@ function App() {
       </Typography>
     </ul>
   );
-  
+
   return (
     <div className="">
       <header>
@@ -140,7 +139,7 @@ function App() {
         </div>
       </header>
       <main className=" mt-8 flex justify-center">
-        <Outlet/>
+        <Outlet />
       </main>
       <footer className=" mt-10 ">Todos los derechos reservados</footer>
     </div>
