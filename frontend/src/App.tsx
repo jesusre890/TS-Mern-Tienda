@@ -2,7 +2,10 @@ import { useContext, useEffect } from "react";
 import { Badge, Button, Container, Nav, Navbar } from "react-bootstrap";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, Outlet } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { Store } from "./Store";
+import { Toaster } from "sonner";
+import Footer from "./components/Footer";
 
 function App() {
   const {
@@ -19,10 +22,13 @@ function App() {
 
   return (
     <div className="">
+      <Toaster richColors />
       <header>
         <Navbar>
           <Container>
-            <Navbar.Brand>Shoes Shop</Navbar.Brand>
+            <LinkContainer to="/">
+              <Navbar.Brand>Shoes Shop</Navbar.Brand>
+            </LinkContainer>
           </Container>
           <Nav>
             <Button variant={mode} onClick={switchModeHandler}>
@@ -32,7 +38,7 @@ function App() {
               to="/cart"
               className="flex items-center text-2xl hover:bg-blue-gray-50 p-1 rounded-full no-underline"
             >
-              <IoCartOutline/>
+              <IoCartOutline />
               {cart.cartItems.length > 0 && (
                 <Badge pill bg="danger" className=" text-xs">
                   {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
@@ -48,7 +54,7 @@ function App() {
       <main className=" mt-8 flex justify-center">
         <Outlet />
       </main>
-      <footer className=" mt-10 ">Todos los derechos reservados</footer>
+      <Footer/>
     </div>
   );
 }

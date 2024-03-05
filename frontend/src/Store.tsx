@@ -43,7 +43,7 @@ function reducer(state: AppState, action: Action): AppState {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
         (item: CartItem) => item._id === newItem._id
-      );
+      )
       const cartItems = existItem
         ? state.cart.cartItems.map((item: CartItem) =>
             item._id === existItem._id ? newItem : item

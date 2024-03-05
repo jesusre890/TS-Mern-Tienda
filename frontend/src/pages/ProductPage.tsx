@@ -1,11 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetProductDetailsBySlugQuery } from "../hooks/productHooks";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { getError } from "../utils";
+import { convertProductToCartItem, getError } from "../utils";
 import { ApiError } from "../types/ApiError";
 import { Button, Card, List, ListItem, Rating } from "@material-tailwind/react";
+import { useContext } from "react";
+import { Store } from "../Store";
+import { toast } from "sonner";
 
 export default function ProductPage() {
   const params = useParams();
@@ -15,7 +18,27 @@ export default function ProductPage() {
     isLoading,
     error,
   } = useGetProductDetailsBySlugQuery(slug!);
-  console.log(product);
+  //console.log(product);
+
+  const { state, dispatch } = useContext(Store);
+  const { cart }=state;
+  
+  const navigate = useNavigate()
+
+  const addToCartHandler=() => {
+    const existItem=cart.cartItems.find((x) => x._id===product!._id)
+    const quantity=existItem? existItem.quantity+1:1
+    if (product!.countInStock < quantity) {
+      toast.error("Lo siento, el producto esta fuera de stock");
+      return;
+    }
+     dispatch({
+       type: "CART_ADD_ITEM",
+       payload: { ...convertProductToCartItem(product!), quantity },
+     });
+     toast.success("Producto adherido al carrito");
+     navigate("/cart");
+  }
 
   return isLoading ? (
     <LoadingBox />
@@ -26,7 +49,7 @@ export default function ProductPage() {
   ) : (
     <div className="lg:flex md:flex lg:flex-wrap md:flex-wrap justify-center">
       <Helmet>
-        <title>Product Page</title>
+        <title>Pagina de producto</title>
       </Helmet>
       <div className="flex flex-col justify-center md:flex-row lg:gap-10 lg:w-3/4">
         <div>
@@ -72,6 +95,7 @@ export default function ProductPage() {
               </Button>
             ) : (
               <Button
+                onClick={addToCartHandler}
                 placeholder={undefined}
                 ripple={false}
                 fullWidth={true}

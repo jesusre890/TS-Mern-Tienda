@@ -13,6 +13,7 @@ import { useContext } from "react";
 import { Store } from "../Store";
 import { CartItem } from "../types/Cart";
 import { convertProductToCartItem } from "../utils";
+import { toast } from "sonner";
 
 export default function ProductItem({ product }: { product: Product }) {
   const { state, dispatch: Dispatch } = useContext(Store);
@@ -25,14 +26,14 @@ export default function ProductItem({ product }: { product: Product }) {
     const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     if (product.countInStock < quantity) {
-      alert("Sorry. Product is out of stock");
+      toast.error("Sorry. Product is out of stock");
       return;
     }
     Dispatch({
       type: "CART_ADD_ITEM",
       payload: { ...item, quantity },
     });
-    alert("Product added to the cart");
+    toast.success("Product added to the cart");
   };
 
   return (
