@@ -29,6 +29,9 @@ export default function CartPage() {
   const checkoutHandler = () => {
     navigate("/signin?redirect=/shipping");
   };
+  const removeItemHandler = (item: CartItem) => {
+    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
   return (
     <div>
       <Helmet>
@@ -75,7 +78,7 @@ export default function CartPage() {
                   <div className=" w-5 flex justify-end md:mx-8">${item.price}</div>
                   <div>
                     <Button
-                      //onClick={() => removeItemHandler(item)}
+                      onClick={() => removeItemHandler(item)}
                       variant="light"
                     >
                       <i className="fas fa-trash"></i>
