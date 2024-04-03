@@ -1,4 +1,6 @@
-import { Product } from "./types/Product";
+import bcrypt from 'bcryptjs';
+import { User } from "./models/userModel";
+import { Product } from "./models/productModel";
 
 export const sampleProducts: Product[] = [
   {
@@ -65,5 +67,20 @@ export const sampleProducts: Product[] = [
       "Las zapatillas Fila Disruptor II destacan por su diseño robusto y su confort superior, perfectas para destacar en la calle.",
     rating: 4.4,
     numReviews: 450,
+  },
+];
+
+export const sampleUsers: User[] = [
+  {
+    name: "Joe",
+    email: "admin@example.com",
+    password: bcrypt.hashSync("123456"),
+    isAdmin: true,
+  },
+  {
+    name: "John",
+    email: "user@example.com",
+    password: bcrypt.hashSync("123456"),
+    isAdmin: false,
   },
 ];
